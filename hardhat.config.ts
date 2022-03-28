@@ -4,18 +4,14 @@ dotenv.config();
 import "@nomiclabs/hardhat-ethers";
 import "@nomiclabs/hardhat-waffle";
 import "@nomiclabs/hardhat-vyper";
+import "hardhat-abi-exporter";
 import "@typechain/hardhat";
 
 export default {
-  defaultNetwork: "local",
   vyper: {
-    compilers: [{ version: "0.2.4" }, { version: "0.2.7" }],
+    compilers: [{ version: "0.2.16" }],
   },
   networks: {
-    local: {
-      url: "http://127.0.0.1:8545/",
-      chainId: 31337,
-    },
     milkomedaTestnet: {
       url: "http://use-util.cloud.milkomeda.com:8545",
       chainId: 200101,
@@ -34,5 +30,11 @@ export default {
   typechain: {
     outDir: "./dist/types",
     target: "ethers-v5",
+  },
+  abiExporter: {
+    path: "./dist/abis",
+    clear: false,
+    flat: true,
+    runOnCompile: true,
   },
 };
